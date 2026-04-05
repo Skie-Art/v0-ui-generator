@@ -12,7 +12,7 @@ Generate, iterate, and consult on UI right in your editor — using your favouri
 
 ---
 
-<img src="assets/screenshots/hero.png" alt="v0 UI Generator in action" width="670" />
+<img src="https://raw.githubusercontent.com/Skie-Art/v0-ui-generator/main/assets/screenshots/hero.png" alt="v0 UI Generator in action" width="670" />
 
 ---
 
@@ -26,7 +26,7 @@ This extension connects [v0](https://v0.app) to **Claude Code**, **GitHub Copilo
 
 The real power is in how your assistant and v0 work together. Your assistant reads your code — the design tokens, the surface colors, the existing patterns — and gives v0 the context it needs. v0 comes back with expert design recommendations. Your assistant adapts them to your codebase conventions and applies the changes. One conversation, three capabilities working together.
 
-<img src="assets/screenshots/claude-v0.gif" alt="AI assistant using v0 tools" width="480" />
+<img src="https://raw.githubusercontent.com/Skie-Art/v0-ui-generator/main/assets/screenshots/claude-v0.gif" alt="AI assistant using v0 tools" width="480" />
 
 ---
 
@@ -38,7 +38,7 @@ Tell your assistant what's wrong — "the hover states feel invisible" or "this 
 
 _"Why do my hover states disappear in dark mode?" "Is this button accessible on this surface?" "Give me three options for this card's focus state — subtle to bold."_
 
-<img src="assets/screenshots/design-consultation.png" alt="Design consultation mode" width="670" />
+<img src="https://raw.githubusercontent.com/Skie-Art/v0-ui-generator/main/assets/screenshots/design-consultation.png" alt="Design consultation mode" width="670" />
 
 ### ✧ &nbsp; _Component generation_
 
@@ -46,7 +46,7 @@ Describe what you want in natural language. v0 generates production-ready React/
 
 _Perfect for: scaffolding new components, building themed interfaces, generating design system lookbooks, prototyping layouts._
 
-<img src="assets/screenshots/lookbook.gif" alt="Iterative refinement" width="480" />
+<img src="https://raw.githubusercontent.com/Skie-Art/v0-ui-generator/main/assets/screenshots/lookbook.gif" alt="Iterative refinement" width="480" />
 
 ---
 
@@ -90,7 +90,7 @@ Run `v0: Set API Key` from the Command Palette (`Ctrl+Shift+P`). The status bar 
 
 **Claude Code (additional step):**
 
-Claude Code has its own MCP configuration — set `V0_API_KEY` as an environment variable:
+Claude Code has its own MCP configuration. First, set `V0_API_KEY` as an environment variable:
 
 ```powershell
 # PowerShell — permanent user variable
@@ -102,10 +102,14 @@ Claude Code has its own MCP configuration — set `V0_API_KEY` as an environment
 export V0_API_KEY="your-key-here"
 ```
 
-Then register the server:
+Then register the extension's MCP server. The path depends on where VS Code installs extensions:
 
 ```bash
-claude mcp add v0-ui-generator -- node /path/to/v0-mcp/dist/main.js
+# Windows
+claude mcp add v0-ui-generator -- node "%USERPROFILE%/.vscode/extensions/skie-art.v0-ui-generator-1.0.2/dist/main.js"
+
+# macOS / Linux
+claude mcp add v0-ui-generator -- node ~/.vscode/extensions/skie-art.v0-ui-generator-1.0.2/dist/main.js
 ```
 
 Restart your Claude Code session and verify with `v0_setup_check`.
@@ -113,17 +117,6 @@ Restart your Claude Code session and verify with `v0_setup_check`.
 **3. Start building**
 
 Ask your AI assistant to generate UI. It will call the v0 tools automatically.
-
-### ✓ &nbsp; _Standalone MCP server_
-
-Use the MCP server without the VS Code extension:
-
-```bash
-git clone https://github.com/Skie-Art/v0-mcp.git
-cd v0-mcp
-npm install && npm run build
-claude mcp add v0-ui-generator -e V0_API_KEY=your-key-here -- node dist/main.js
-```
 
 ---
 
