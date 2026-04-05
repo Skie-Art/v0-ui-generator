@@ -2,6 +2,28 @@
 
 All notable changes to the v0 UI Generator extension will be documented in this file.
 
+## [1.0.4] - 2026-04-06 (Preview)
+
+### Added
+
+- **npm package** — standalone MCP server published to npm as `v0-ui-generator`. Claude Code users can now set up with a single command: `claude mcp add v0-ui-generator -e V0_API_KEY=key -- npx v0-ui-generator`
+- **npm badge** on the overview page
+
+### Changed
+
+- **Claude Code setup** — simplified from finding the extension install path to a one-liner using npx
+
+## [1.0.4] - 2026-04-06 (Preview)
+
+### Added
+
+- **npm package** — standalone MCP server published to npm as `v0-ui-generator`. Claude Code users can now set up with a single command: `claude mcp add v0-ui-generator -e V0_API_KEY=key -- npx v0-ui-generator`
+- **npm badge** on the overview page
+
+### Changed
+
+- **Claude Code setup** — simplified from finding the extension install path to a one-liner using npx
+
 ## [1.0.0] - 2026-04-05 (Preview)
 
 First public release — free during preview.

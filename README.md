@@ -1,5 +1,6 @@
 [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/skie-art.v0-ui-generator?label=VS%20Code%20Marketplace&color=blue)](https://marketplace.visualstudio.com/items?itemName=skie-art.v0-ui-generator)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/skie-art.v0-ui-generator)](https://marketplace.visualstudio.com/items?itemName=skie-art.v0-ui-generator)
+[![npm](https://img.shields.io/npm/v/v0-ui-generator?label=npm&color=cb3837)](https://www.npmjs.com/package/v0-ui-generator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Built with ☕, 🐈‍⬛, and far too many oklch values.
@@ -88,28 +89,10 @@ Go to [v0.app/chat/settings/keys](https://v0.app/chat/settings/keys) and create 
 
 Run `v0: Set API Key` from the Command Palette (`Ctrl+Shift+P`). The status bar shows `✓ v0` when connected. The v0 tools are immediately available to Copilot and other VS Code MCP consumers.
 
-**Claude Code (additional step):**
-
-Claude Code has its own MCP configuration. First, set `V0_API_KEY` as an environment variable:
-
-```powershell
-# PowerShell — permanent user variable
-[System.Environment]::SetEnvironmentVariable('V0_API_KEY', 'your-key-here', 'User')
-```
+**Claude Code:**
 
 ```bash
-# macOS / Linux — add to shell profile
-export V0_API_KEY="your-key-here"
-```
-
-Then register the extension's MCP server. The path depends on where VS Code installs extensions:
-
-```bash
-# Windows
-claude mcp add v0-ui-generator -- node "%USERPROFILE%/.vscode/extensions/skie-art.v0-ui-generator-1.0.2/dist/main.js"
-
-# macOS / Linux
-claude mcp add v0-ui-generator -- node ~/.vscode/extensions/skie-art.v0-ui-generator-1.0.2/dist/main.js
+claude mcp add v0-ui-generator -e V0_API_KEY=your-key-here -- npx v0-ui-generator
 ```
 
 Restart your Claude Code session and verify with `v0_setup_check`.
@@ -146,9 +129,9 @@ Ask your AI assistant to generate UI. It will call the v0 tools automatically.
 
 ## Requirements
 
-- VS Code 1.97+
-- Node.js 22+
 - [v0 Premium or Team plan](https://v0.app/pricing)
+- Node.js 22+
+- VS Code 1.97+
 
 ## Built with
 
