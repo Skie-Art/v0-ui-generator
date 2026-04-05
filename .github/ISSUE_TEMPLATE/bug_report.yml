@@ -1,0 +1,79 @@
+name: Bug Report
+description: Something isn't working as expected
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please fill out the sections below so we can reproduce and fix it.
+
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      description: "Run `v0: Set API Key` from the Command Palette to see the version in the status bar, or check the Extensions panel."
+      placeholder: "e.g. 1.0.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: Where are you using the extension?
+      options:
+        - VS Code + GitHub Copilot
+        - Claude Code (CLI)
+        - Claude Code (VS Code extension)
+        - Other MCP client
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly. What did you expect vs what actually happened?
+      placeholder: "When I asked my assistant to generate a login form, the v0_generate_ui tool returned..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we trigger this bug?
+      placeholder: |
+        1. Open VS Code with the extension installed
+        2. Ask Copilot to "generate a dark mode toggle"
+        3. The tool call fails with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error output or logs
+      description: Paste any error messages, tool call output, or relevant logs. This will be formatted as code automatically.
+      render: shell
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-flight checks
+      options:
+        - label: I have a valid v0 API key and `v0_setup_check` passes
+          required: true
+        - label: I'm on the latest version of the extension
+          required: true

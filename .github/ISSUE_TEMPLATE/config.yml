@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: v0 Platform Documentation
+    url: https://v0.app/docs/api/platform/
+    about: Official v0 Platform API docs — check here first for API questions
+  - name: VS Code Marketplace
+    url: https://marketplace.visualstudio.com/items?itemName=skie-art.v0-ui-generator
+    about: Extension listing, reviews, and install
