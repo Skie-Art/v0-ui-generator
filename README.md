@@ -19,9 +19,11 @@ Generate, iterate, and consult on UI right in your editor — using your favouri
 
 ## What this does
 
-Your AI coding assistant is great at logic, architecture, and implementation. It's not great at visual design. v0 is.
+Your AI coding assistant is great at logic, architecture, and implementation. It is not always great at visual design. v0 is.
 
-This extension connects [v0](https://v0.app) to **Claude Code**, **GitHub Copilot**, and any MCP-compatible agent — so your assistant can generate components, consult on design decisions, and iterate on UI without leaving your editor. No tab-switching, no copy-pasting — v0's design expertise becomes part of your assistant's toolkit through 12 MCP tools.
+v0 UI Generator gives MCP-compatible assistants 12 tools for UI generation, design consultation, iterative refinement, project management, and deployment diagnostics. Your assistant can send v0 the right design context, receive generated React/TSX or design guidance, then adapt the result to your codebase conventions.
+
+Claude Code is supported through the standalone MCP server. GitHub Copilot and other VS Code assistants can use the VS Code extension path. Other MCP-compatible tools can launch the npm package directly.
 
 ### ⚇ &nbsp; _Agent in the loop_
 
@@ -35,7 +37,7 @@ The real power is in how your assistant and v0 work together. Your assistant rea
 
 ### ❧ &nbsp; _Design consultation_
 
-Tell your assistant what's wrong — "the hover states feel invisible" or "this button doesn't match the rest of the UI." It reads your code, sends v0 the design context, and v0 comes back with specific fixes: oklch values, className snippets, multiple options ranked from subtle to expressive, and the rationale behind each choice.
+Tell your assistant what feels wrong — "the hover states feel invisible" or "this button doesn't match the rest of the UI." It reads your code, sends v0 the design context, and v0 comes back with specific fixes: oklch values, className snippets, multiple options ranked from subtle to expressive, and the rationale behind each choice.
 
 _"Why do my hover states disappear in dark mode?" "Is this button accessible on this surface?" "Give me three options for this card's focus state — subtle to bold."_
 
@@ -52,6 +54,7 @@ _Perfect for: scaffolding new components, building themed interfaces, generating
 ---
 
 <h2>↻ &nbsp; Iterative by design</h2>
+
 v0 conversations persist across tool calls. Ask for a color palette, refine it with your constraints, generate a full interface, then iterate on the details — each message builds on the last. v0 learns your design language as the conversation progresses.
 
 First pass not quite right? Send v0 your design system principles and it adjusts. Getting close but the shadows feel too heavy? Refine again. The conversation keeps its context so you're building on progress, not starting over.
@@ -77,29 +80,51 @@ First pass not quite right? Send v0 your design system principles and it adjusts
 
 ---
 
-### ➾ &nbsp; _Getting started_
+## Getting started
 
-**1. Get an API key**
+### Option A — VS Code extension
 
-Go to [v0.app/chat/settings/keys](https://v0.app/chat/settings/keys) and create a key. Requires a [v0 Premium or Team plan](https://v0.app/pricing).
+Use this path for GitHub Copilot and other VS Code assistants that consume VS Code MCP server definitions.
 
-**2. Set your key**
+**Requirements**
 
-**VS Code / GitHub Copilot:**
+- VS Code 1.97+
+- A [v0 Premium or Team plan](https://v0.app/pricing)
+- A v0 API key from [v0.app/chat/settings/keys](https://v0.app/chat/settings/keys)
 
-Run `v0: Set API Key` from the Command Palette (`Ctrl+Shift+P`). The status bar shows `✓ v0` when connected. The v0 tools are immediately available to Copilot and other VS Code MCP consumers.
+**Setup**
 
-**Claude Code:**
+1. Install **v0 UI Generator** from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=skie-art.v0-ui-generator).
+2. Run `v0: Set API Key` from the Command Palette (`Ctrl+Shift+P`).
+3. Confirm the status bar shows `✓ v0`.
+4. Ask your VS Code assistant to use the v0 tools, or verify with `v0_setup_check`.
+
+### Option B — Standalone npm MCP server
+
+Use this path for Claude Code, other MCP-compatible CLIs, IDEs, and agent runtimes.
+
+**Requirements**
+
+- Node.js 22+
+- A [v0 Premium or Team plan](https://v0.app/pricing)
+- A v0 API key from [v0.app/chat/settings/keys](https://v0.app/chat/settings/keys)
+- An MCP-compatible client that can launch stdio servers
+
+**Generic MCP command**
+
+```bash
+npx v0-ui-generator
+```
+
+Configure your MCP client to launch that command with `V0_API_KEY` in the server environment.
+
+**Claude Code example**
 
 ```bash
 claude mcp add v0-ui-generator -e V0_API_KEY=your-key-here -- npx v0-ui-generator
 ```
 
-Restart your Claude Code session and verify with `v0_setup_check`.
-
-**3. Start building**
-
-Ask your AI assistant to generate UI. It will call the v0 tools automatically.
+Restart your client session and verify with `v0_setup_check`.
 
 ---
 
@@ -125,13 +150,17 @@ Ask your AI assistant to generate UI. It will call the v0 tools automatically.
 | `v0_check_deployment`  | Get deployment logs and errors                                   |
 | `v0_setup_check`       | Validate API connectivity and account info                       |
 
----
+### Model selection
 
-## Requirements
+`v0_generate_ui` and `v0_refine_ui` accept current v0 model IDs:
 
-- [v0 Premium or Team plan](https://v0.app/pricing)
-- Node.js 22+
-- VS Code 1.97+
+- `v0-auto`
+- `v0-mini`
+- `v0-pro`
+- `v0-max`
+- `v0-max-fast`
+
+Omit `model` to let v0 choose the default model.
 
 ## Built with
 
@@ -141,5 +170,3 @@ Ask your AI assistant to generate UI. It will call the v0 tools automatically.
 ## License
 
 MIT
-
----

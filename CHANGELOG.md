@@ -1,23 +1,28 @@
 # Changelog
 
-All notable changes to the v0 UI Generator extension will be documented in this file.
+All notable changes to the v0 UI Generator extension and standalone MCP package will be documented in this file.
 
-## [1.0.4] - 2026-04-06 (Preview)
-
-### Added
-
-- **npm package** — standalone MCP server published to npm as `v0-ui-generator`. Claude Code users can now set up with a single command: `claude mcp add v0-ui-generator -e V0_API_KEY=key -- npx v0-ui-generator`
-- **npm badge** on the overview page
+## [2.0.0] - 2026-05-16
 
 ### Changed
 
-- **Claude Code setup** — simplified from finding the extension install path to a one-liner using npx
+- **v0 Platform API compatibility** — upgraded to the current `v0-sdk` 0.16.x line.
+- **Current model IDs** — `v0_generate_ui` and `v0_refine_ui` now expose `v0-auto`, `v0-mini`, `v0-pro`, `v0-max`, and `v0-max-fast`.
+- **Default model behavior** — omitting `model` now lets v0 choose the default model instead of sending a hardcoded default.
+- **Refinement API** — migrated refinement calls to the current `v0.chats.sendMessage()` SDK method.
+- **Response normalization** — generation/refinement responses preserve MCP-facing fields while handling current `webUrl` and `latestVersion.files` response shapes.
+- **Product positioning** — updated package and README copy to describe both distribution paths: the VS Code extension for MCP-aware VS Code assistants and the standalone npm MCP server for MCP-compatible IDEs, CLIs, and agent runtimes. Claude Code remains a supported example.
+
+### Fixed
+
+- Removed stale `v0-1.5-*` model IDs that are no longer accepted by the v0 Platform API.
+- Added lightweight tool-argument validation so missing required values fail clearly instead of being sent as literal `"undefined"` strings.
 
 ## [1.0.4] - 2026-04-06 (Preview)
 
 ### Added
 
-- **npm package** — standalone MCP server published to npm as `v0-ui-generator`. Claude Code users can now set up with a single command: `claude mcp add v0-ui-generator -e V0_API_KEY=key -- npx v0-ui-generator`
+- **npm package** — standalone MCP server published to npm as `v0-ui-generator`. Claude Code users can set up with a single command: `claude mcp add v0-ui-generator -e V0_API_KEY=key -- npx v0-ui-generator`
 - **npm badge** on the overview page
 
 ### Changed
